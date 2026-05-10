@@ -1,0 +1,478 @@
+2026-05-10 01:20:07.981 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 01:20:08.197 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 01:20:26.785 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 01:20:27.333 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 01:30:05.583 +05:30 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5273: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-05-10 01:53:28.743 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:00:45.146 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:06:08.964 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:08:10.868 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:11:02.462 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:15:02.372 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:15:33.643 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-10 02:15:33.647 +05:30 [INF] HTTP OPTIONS /api/auth/login responded 204 in 5.3480 ms
+2026-05-10 02:15:34.335 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 669.3719 ms
+2026-05-10 02:16:15.382 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.7456 ms
+2026-05-10 02:16:15.386 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0842 ms
+2026-05-10 02:16:15.574 +05:30 [INF] HTTP GET /api/medicines responded 200 in 160.4231 ms
+2026-05-10 02:16:15.586 +05:30 [INF] HTTP GET /api/medicines responded 200 in 9.2004 ms
+2026-05-10 02:16:27.168 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.4273 ms
+2026-05-10 02:16:27.168 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.4173 ms
+2026-05-10 02:16:27.182 +05:30 [INF] HTTP GET /api/medicines responded 200 in 10.8361 ms
+2026-05-10 02:16:27.187 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.6916 ms
+2026-05-10 02:16:31.492 +05:30 [INF] HTTP GET /api/medicines responded 200 in 7.1400 ms
+2026-05-10 02:16:31.496 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.0886 ms
+2026-05-10 02:17:20.567 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0891 ms
+2026-05-10 02:17:20.567 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0270 ms
+2026-05-10 02:17:20.573 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.3978 ms
+2026-05-10 02:17:20.578 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.0142 ms
+2026-05-10 02:17:42.390 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0970 ms
+2026-05-10 02:17:42.390 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0969 ms
+2026-05-10 02:17:42.394 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.0373 ms
+2026-05-10 02:17:42.398 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.3538 ms
+2026-05-10 02:18:48.901 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1930 ms
+2026-05-10 02:18:48.901 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2209 ms
+2026-05-10 02:18:48.918 +05:30 [INF] HTTP GET /api/medicines responded 200 in 13.9428 ms
+2026-05-10 02:18:48.922 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.4659 ms
+2026-05-10 02:20:04.657 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2216 ms
+2026-05-10 02:20:04.657 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2184 ms
+2026-05-10 02:20:04.675 +05:30 [INF] HTTP GET /api/medicines responded 200 in 13.4512 ms
+2026-05-10 02:20:04.679 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.7746 ms
+2026-05-10 02:22:00.495 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2161 ms
+2026-05-10 02:22:00.495 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2155 ms
+2026-05-10 02:22:00.508 +05:30 [INF] HTTP GET /api/medicines responded 200 in 11.4278 ms
+2026-05-10 02:22:00.512 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.2208 ms
+2026-05-10 02:22:05.745 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1093 ms
+2026-05-10 02:22:05.745 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0973 ms
+2026-05-10 02:22:05.751 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.6330 ms
+2026-05-10 02:22:05.757 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.3940 ms
+2026-05-10 02:22:12.734 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1025 ms
+2026-05-10 02:22:12.734 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1025 ms
+2026-05-10 02:22:12.739 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.4867 ms
+2026-05-10 02:22:12.744 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.8100 ms
+2026-05-10 02:26:44.373 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:28:12.091 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-10 02:28:12.097 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 7.4314 ms
+2026-05-10 02:28:12.097 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 7.4184 ms
+2026-05-10 02:28:12.097 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 7.4426 ms
+2026-05-10 02:28:12.097 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 7.4207 ms
+2026-05-10 02:28:12.097 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 7.4468 ms
+2026-05-10 02:28:12.097 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 7.4135 ms
+2026-05-10 02:28:12.367 +05:30 [INF] HTTP GET /api/medicines responded 200 in 249.1511 ms
+2026-05-10 02:28:12.367 +05:30 [INF] HTTP GET /api/categories responded 200 in 249.1326 ms
+2026-05-10 02:28:12.366 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 249.1070 ms
+2026-05-10 02:28:12.453 +05:30 [INF] HTTP GET /api/categories responded 200 in 87.9838 ms
+2026-05-10 02:28:12.453 +05:30 [INF] HTTP GET /api/medicines responded 200 in 87.9844 ms
+2026-05-10 02:28:12.453 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 87.9836 ms
+2026-05-10 02:28:22.596 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1355 ms
+2026-05-10 02:28:22.596 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.1369 ms
+2026-05-10 02:28:22.596 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0506 ms
+2026-05-10 02:28:22.596 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0282 ms
+2026-05-10 02:28:22.596 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0431 ms
+2026-05-10 02:28:22.598 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0585 ms
+2026-05-10 02:28:22.618 +05:30 [INF] HTTP GET /api/medicines responded 200 in 17.5602 ms
+2026-05-10 02:28:22.618 +05:30 [INF] HTTP GET /api/categories responded 200 in 18.1040 ms
+2026-05-10 02:28:22.618 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 18.2844 ms
+2026-05-10 02:28:22.626 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.9342 ms
+2026-05-10 02:28:22.626 +05:30 [INF] HTTP GET /api/medicines responded 200 in 5.7462 ms
+2026-05-10 02:28:22.627 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.1819 ms
+2026-05-10 02:29:44.450 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.2456 ms
+2026-05-10 02:29:44.450 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.2787 ms
+2026-05-10 02:29:44.450 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2451 ms
+2026-05-10 02:29:44.450 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1585 ms
+2026-05-10 02:29:44.450 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0264 ms
+2026-05-10 02:29:44.450 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0406 ms
+2026-05-10 02:29:44.468 +05:30 [INF] HTTP GET /api/medicines responded 200 in 12.5418 ms
+2026-05-10 02:29:44.470 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 14.4965 ms
+2026-05-10 02:29:44.471 +05:30 [INF] HTTP GET /api/categories responded 200 in 15.8025 ms
+2026-05-10 02:29:44.475 +05:30 [INF] HTTP GET /api/categories responded 200 in 1.9836 ms
+2026-05-10 02:29:44.475 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.3406 ms
+2026-05-10 02:29:44.475 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.4373 ms
+2026-05-10 02:29:48.288 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 5.2610 ms
+2026-05-10 02:29:48.288 +05:30 [INF] HTTP GET /api/medicines responded 200 in 5.2427 ms
+2026-05-10 02:29:48.288 +05:30 [INF] HTTP GET /api/categories responded 200 in 5.2610 ms
+2026-05-10 02:29:48.294 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.8022 ms
+2026-05-10 02:29:48.294 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.8159 ms
+2026-05-10 02:29:48.294 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.8022 ms
+2026-05-10 02:29:53.279 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1971 ms
+2026-05-10 02:29:53.280 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0678 ms
+2026-05-10 02:29:53.280 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0156 ms
+2026-05-10 02:29:53.280 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0598 ms
+2026-05-10 02:29:53.291 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.5511 ms
+2026-05-10 02:29:53.291 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 6.8454 ms
+2026-05-10 02:29:53.291 +05:30 [INF] HTTP GET /api/categories responded 200 in 6.7742 ms
+2026-05-10 02:29:53.298 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.6362 ms
+2026-05-10 02:29:53.298 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.9061 ms
+2026-05-10 02:29:53.298 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.0606 ms
+2026-05-10 02:30:21.013 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2070 ms
+2026-05-10 02:30:21.015 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0325 ms
+2026-05-10 02:30:21.015 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0648 ms
+2026-05-10 02:30:21.015 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0173 ms
+2026-05-10 02:30:21.015 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0219 ms
+2026-05-10 02:30:21.017 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0616 ms
+2026-05-10 02:30:21.037 +05:30 [INF] HTTP GET /api/categories responded 200 in 17.2800 ms
+2026-05-10 02:30:21.037 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 16.7171 ms
+2026-05-10 02:30:21.037 +05:30 [INF] HTTP GET /api/medicines responded 200 in 21.3129 ms
+2026-05-10 02:30:21.042 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.3022 ms
+2026-05-10 02:30:21.045 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.2909 ms
+2026-05-10 02:30:21.045 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 6.6060 ms
+2026-05-10 02:32:17.740 +05:30 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.8608 ms
+2026-05-10 02:32:18.741 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 984.8025 ms
+2026-05-10 02:32:30.030 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.3217 ms
+2026-05-10 02:32:30.035 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0552 ms
+2026-05-10 02:32:30.040 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.1225 ms
+2026-05-10 02:32:30.041 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1255 ms
+2026-05-10 02:32:30.041 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0113 ms
+2026-05-10 02:32:30.218 +05:30 [INF] HTTP GET /api/medicines responded 200 in 154.4707 ms
+2026-05-10 02:32:30.229 +05:30 [INF] HTTP GET /api/categories responded 200 in 161.8912 ms
+2026-05-10 02:32:30.229 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 148.0313 ms
+2026-05-10 02:32:30.267 +05:30 [INF] HTTP GET /api/medicines responded 200 in 36.4300 ms
+2026-05-10 02:32:30.286 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 17.9610 ms
+2026-05-10 02:32:30.310 +05:30 [INF] HTTP GET /api/categories responded 200 in 42.0466 ms
+2026-05-10 02:35:30.494 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1260 ms
+2026-05-10 02:35:30.497 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0574 ms
+2026-05-10 02:35:30.497 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0266 ms
+2026-05-10 02:35:30.497 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0609 ms
+2026-05-10 02:35:30.502 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0922 ms
+2026-05-10 02:35:30.520 +05:30 [INF] HTTP GET /api/medicines responded 200 in 15.4007 ms
+2026-05-10 02:35:30.520 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 14.4496 ms
+2026-05-10 02:35:30.520 +05:30 [INF] HTTP GET /api/categories responded 200 in 14.4656 ms
+2026-05-10 02:35:30.525 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.5947 ms
+2026-05-10 02:35:30.525 +05:30 [INF] HTTP GET /api/categories responded 200 in 1.6532 ms
+2026-05-10 02:35:30.525 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.6199 ms
+2026-05-10 02:36:11.063 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0694 ms
+2026-05-10 02:36:11.065 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0270 ms
+2026-05-10 02:36:11.066 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0378 ms
+2026-05-10 02:36:11.078 +05:30 [INF] HTTP GET /api/medicines responded 200 in 11.7911 ms
+2026-05-10 02:36:11.080 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 9.8599 ms
+2026-05-10 02:36:11.081 +05:30 [INF] HTTP GET /api/categories responded 200 in 12.9515 ms
+2026-05-10 02:36:11.089 +05:30 [INF] HTTP GET /api/medicines responded 200 in 8.4026 ms
+2026-05-10 02:36:11.093 +05:30 [INF] HTTP GET /api/categories responded 200 in 6.3497 ms
+2026-05-10 02:36:11.094 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.9030 ms
+2026-05-10 02:37:18.921 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0580 ms
+2026-05-10 02:37:18.921 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0234 ms
+2026-05-10 02:37:18.923 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0304 ms
+2026-05-10 02:37:18.923 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0306 ms
+2026-05-10 02:37:18.935 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 5.6635 ms
+2026-05-10 02:37:18.935 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.4976 ms
+2026-05-10 02:37:18.943 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.0053 ms
+2026-05-10 02:37:18.945 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.6517 ms
+2026-05-10 02:37:18.951 +05:30 [INF] HTTP GET /api/categories responded 200 in 22.5509 ms
+2026-05-10 02:37:18.957 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.2850 ms
+2026-05-10 02:38:03.454 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0295 ms
+2026-05-10 02:38:03.457 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0263 ms
+2026-05-10 02:38:03.457 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0122 ms
+2026-05-10 02:38:03.457 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0064 ms
+2026-05-10 02:38:03.458 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0205 ms
+2026-05-10 02:38:03.471 +05:30 [INF] HTTP GET /api/medicines responded 200 in 12.4475 ms
+2026-05-10 02:38:03.471 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 11.5122 ms
+2026-05-10 02:38:03.471 +05:30 [INF] HTTP GET /api/categories responded 200 in 11.6530 ms
+2026-05-10 02:38:03.479 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.3396 ms
+2026-05-10 02:38:03.479 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.8251 ms
+2026-05-10 02:38:03.479 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.2949 ms
+2026-05-10 02:38:20.342 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 1.1199 ms
+2026-05-10 02:38:20.343 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0218 ms
+2026-05-10 02:38:20.343 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0218 ms
+2026-05-10 02:38:20.343 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0201 ms
+2026-05-10 02:38:20.347 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0264 ms
+2026-05-10 02:38:20.349 +05:30 [INF] HTTP GET /api/medicines responded 200 in 2.3914 ms
+2026-05-10 02:38:20.349 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.3633 ms
+2026-05-10 02:38:20.349 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.4709 ms
+2026-05-10 02:38:20.353 +05:30 [INF] HTTP GET /api/categories responded 200 in 1.6233 ms
+2026-05-10 02:38:20.353 +05:30 [INF] HTTP GET /api/medicines responded 200 in 1.8071 ms
+2026-05-10 02:38:20.353 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 1.7434 ms
+2026-05-10 02:44:33.886 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:44:34.102 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:44:48.449 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:45:01.765 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 02:45:34.415 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-10 02:45:34.422 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 9.1512 ms
+2026-05-10 02:45:34.422 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 9.1727 ms
+2026-05-10 02:45:34.422 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 9.1568 ms
+2026-05-10 02:45:34.422 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 9.1766 ms
+2026-05-10 02:45:34.422 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 9.1831 ms
+2026-05-10 02:45:34.422 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 9.1681 ms
+2026-05-10 02:45:34.720 +05:30 [INF] HTTP GET /api/medicines responded 200 in 275.8850 ms
+2026-05-10 02:45:34.721 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 275.9173 ms
+2026-05-10 02:45:34.720 +05:30 [INF] HTTP GET /api/categories responded 200 in 275.8867 ms
+2026-05-10 02:45:34.789 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 69.7176 ms
+2026-05-10 02:45:34.789 +05:30 [INF] HTTP GET /api/medicines responded 200 in 70.1528 ms
+2026-05-10 02:45:34.789 +05:30 [INF] HTTP GET /api/categories responded 200 in 70.3481 ms
+2026-05-10 02:46:21.103 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2065 ms
+2026-05-10 02:46:21.103 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.6245 ms
+2026-05-10 02:46:21.106 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0768 ms
+2026-05-10 02:46:21.106 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0772 ms
+2026-05-10 02:46:21.107 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0319 ms
+2026-05-10 02:46:21.107 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0433 ms
+2026-05-10 02:46:21.125 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 14.3065 ms
+2026-05-10 02:46:21.125 +05:30 [INF] HTTP GET /api/medicines responded 200 in 18.8724 ms
+2026-05-10 02:46:21.131 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.4034 ms
+2026-05-10 02:46:21.138 +05:30 [INF] HTTP GET /api/medicines responded 200 in 10.8867 ms
+2026-05-10 02:46:21.138 +05:30 [INF] HTTP GET /api/categories responded 200 in 31.3906 ms
+2026-05-10 02:46:21.155 +05:30 [INF] HTTP GET /api/categories responded 200 in 8.0607 ms
+2026-05-10 02:52:30.258 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.6509 ms
+2026-05-10 02:52:30.772 +05:30 [INF] HTTP POST /api/medicines responded 201 in 511.4365 ms
+2026-05-10 02:52:30.795 +05:30 [INF] HTTP GET /api/medicines responded 200 in 18.2880 ms
+2026-05-10 02:53:37.900 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.3636 ms
+2026-05-10 02:53:37.901 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0799 ms
+2026-05-10 02:53:37.905 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0669 ms
+2026-05-10 02:53:37.905 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1016 ms
+2026-05-10 02:53:37.905 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0211 ms
+2026-05-10 02:53:37.906 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0877 ms
+2026-05-10 02:53:37.924 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 14.1873 ms
+2026-05-10 02:53:37.928 +05:30 [INF] HTTP GET /api/categories responded 200 in 18.3773 ms
+2026-05-10 02:53:37.930 +05:30 [INF] HTTP GET /api/medicines responded 200 in 23.5408 ms
+2026-05-10 02:53:37.930 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 3.3336 ms
+2026-05-10 02:53:37.934 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.4152 ms
+2026-05-10 02:53:37.938 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.9482 ms
+2026-05-10 02:54:11.687 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1608 ms
+2026-05-10 02:54:11.687 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0345 ms
+2026-05-10 02:54:11.687 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.1065 ms
+2026-05-10 02:54:11.688 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0416 ms
+2026-05-10 02:54:11.688 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0348 ms
+2026-05-10 02:54:11.688 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0286 ms
+2026-05-10 02:54:11.695 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.6127 ms
+2026-05-10 02:54:11.697 +05:30 [INF] HTTP GET /api/categories responded 200 in 6.6273 ms
+2026-05-10 02:54:11.700 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 3.0811 ms
+2026-05-10 02:54:11.702 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.7366 ms
+2026-05-10 02:54:11.707 +05:30 [INF] HTTP GET /api/medicines responded 200 in 16.3271 ms
+2026-05-10 02:54:11.714 +05:30 [INF] HTTP GET /api/medicines responded 200 in 5.0490 ms
+2026-05-10 02:54:15.477 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.7907 ms
+2026-05-10 02:54:15.477 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.7906 ms
+2026-05-10 02:54:15.481 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.5136 ms
+2026-05-10 02:54:15.483 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.1388 ms
+2026-05-10 02:54:15.483 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.1362 ms
+2026-05-10 02:54:15.488 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.0436 ms
+2026-05-10 03:07:53.309 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1724 ms
+2026-05-10 03:07:53.309 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0242 ms
+2026-05-10 03:07:53.309 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0294 ms
+2026-05-10 03:07:53.310 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0299 ms
+2026-05-10 03:07:53.311 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0343 ms
+2026-05-10 03:07:53.393 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 81.6104 ms
+2026-05-10 03:07:53.393 +05:30 [INF] HTTP GET /api/categories responded 200 in 81.5975 ms
+2026-05-10 03:07:53.398 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 3.1769 ms
+2026-05-10 03:07:53.398 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.1979 ms
+2026-05-10 03:07:53.402 +05:30 [INF] HTTP GET /api/medicines responded 200 in 90.6839 ms
+2026-05-10 03:07:53.409 +05:30 [INF] HTTP GET /api/medicines responded 200 in 5.2193 ms
+2026-05-10 03:08:03.958 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0569 ms
+2026-05-10 03:08:03.959 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0630 ms
+2026-05-10 03:08:03.959 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0962 ms
+2026-05-10 03:08:03.960 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0330 ms
+2026-05-10 03:08:03.960 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0248 ms
+2026-05-10 03:08:03.968 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.7178 ms
+2026-05-10 03:08:03.968 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.1919 ms
+2026-05-10 03:08:03.972 +05:30 [INF] HTTP GET /api/medicines responded 200 in 8.0039 ms
+2026-05-10 03:08:03.973 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.5587 ms
+2026-05-10 03:08:03.973 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.5634 ms
+2026-05-10 03:08:03.977 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.6028 ms
+2026-05-10 03:08:07.952 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.3301 ms
+2026-05-10 03:08:07.955 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 5.6623 ms
+2026-05-10 03:08:07.955 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.0305 ms
+2026-05-10 03:08:07.957 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.8105 ms
+2026-05-10 03:08:07.960 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.2947 ms
+2026-05-10 03:08:07.965 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.6304 ms
+2026-05-10 03:09:02.746 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0531 ms
+2026-05-10 03:09:02.746 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0219 ms
+2026-05-10 03:09:02.746 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0154 ms
+2026-05-10 03:09:02.748 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0302 ms
+2026-05-10 03:09:02.748 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0312 ms
+2026-05-10 03:09:02.749 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0194 ms
+2026-05-10 03:09:02.761 +05:30 [INF] HTTP GET /api/categories responded 200 in 10.7805 ms
+2026-05-10 03:09:02.761 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 10.6314 ms
+2026-05-10 03:09:02.764 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 1.9971 ms
+2026-05-10 03:09:02.764 +05:30 [INF] HTTP GET /api/categories responded 200 in 1.9972 ms
+2026-05-10 03:09:02.766 +05:30 [INF] HTTP GET /api/medicines responded 200 in 15.6986 ms
+2026-05-10 03:09:02.770 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.1840 ms
+2026-05-10 03:10:07.856 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1339 ms
+2026-05-10 03:10:07.858 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0282 ms
+2026-05-10 03:10:07.858 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0095 ms
+2026-05-10 03:10:07.858 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0085 ms
+2026-05-10 03:10:07.872 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 12.6309 ms
+2026-05-10 03:10:07.872 +05:30 [INF] HTTP GET /api/categories responded 200 in 12.5748 ms
+2026-05-10 03:10:07.876 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.6038 ms
+2026-05-10 03:10:07.876 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 1.9141 ms
+2026-05-10 03:10:07.878 +05:30 [INF] HTTP GET /api/medicines responded 200 in 18.6052 ms
+2026-05-10 03:10:07.883 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.2974 ms
+2026-05-10 03:10:58.119 +05:30 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.0702 ms
+2026-05-10 03:10:58.309 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 186.5545 ms
+2026-05-10 03:11:08.284 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0356 ms
+2026-05-10 03:11:08.284 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0180 ms
+2026-05-10 03:11:08.285 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0250 ms
+2026-05-10 03:11:08.301 +05:30 [INF] HTTP GET /api/categories responded 200 in 13.4824 ms
+2026-05-10 03:11:08.301 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 13.2711 ms
+2026-05-10 03:11:08.305 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.5963 ms
+2026-05-10 03:11:08.307 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.4976 ms
+2026-05-10 03:11:08.309 +05:30 [INF] HTTP GET /api/medicines responded 200 in 21.7225 ms
+2026-05-10 03:11:08.320 +05:30 [INF] HTTP GET /api/medicines responded 200 in 9.5443 ms
+2026-05-10 03:11:46.122 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0966 ms
+2026-05-10 03:11:46.122 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0109 ms
+2026-05-10 03:11:46.122 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0139 ms
+2026-05-10 03:11:46.124 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0272 ms
+2026-05-10 03:11:46.126 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0103 ms
+2026-05-10 03:11:46.125 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0891 ms
+2026-05-10 03:11:46.138 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 10.4717 ms
+2026-05-10 03:11:46.138 +05:30 [INF] HTTP GET /api/categories responded 200 in 11.3354 ms
+2026-05-10 03:11:46.142 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 1.9669 ms
+2026-05-10 03:11:46.142 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.0213 ms
+2026-05-10 03:11:46.147 +05:30 [INF] HTTP GET /api/medicines responded 200 in 19.8503 ms
+2026-05-10 03:11:46.153 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.2108 ms
+2026-05-10 03:25:52.937 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:25:53.155 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:26:05.874 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:26:06.796 +05:30 [ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [SaleItems] ADD CONSTRAINT [FK_SaleItems_Medicines_MedicineId] FOREIGN KEY ([MedicineId]) REFERENCES [Medicines] ([Id]) ON DELETE CASCADE;
+2026-05-10 03:26:25.473 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:26:25.690 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:26:38.863 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:26:39.079 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:26:52.513 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:29:36.005 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:30:00.275 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-10 03:30:00.279 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 5.5982 ms
+2026-05-10 03:30:00.279 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 5.5639 ms
+2026-05-10 03:30:00.279 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 5.5775 ms
+2026-05-10 03:30:00.279 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 5.5369 ms
+2026-05-10 03:30:00.279 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 5.6011 ms
+2026-05-10 03:30:00.279 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 5.5497 ms
+2026-05-10 03:30:00.628 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 330.3538 ms
+2026-05-10 03:30:00.628 +05:30 [INF] HTTP GET /api/categories responded 200 in 330.3574 ms
+2026-05-10 03:30:00.655 +05:30 [INF] HTTP GET /api/medicines responded 200 in 357.8343 ms
+2026-05-10 03:30:00.696 +05:30 [INF] HTTP GET /api/categories responded 200 in 69.4120 ms
+2026-05-10 03:30:00.696 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 69.3386 ms
+2026-05-10 03:30:00.704 +05:30 [INF] HTTP GET /api/medicines responded 200 in 47.5962 ms
+2026-05-10 03:30:14.198 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.2656 ms
+2026-05-10 03:30:14.198 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0332 ms
+2026-05-10 03:30:14.198 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.2462 ms
+2026-05-10 03:30:14.198 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.2463 ms
+2026-05-10 03:30:14.198 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0320 ms
+2026-05-10 03:30:14.198 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0334 ms
+2026-05-10 03:30:14.220 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 17.9565 ms
+2026-05-10 03:30:14.220 +05:30 [INF] HTTP GET /api/categories responded 200 in 17.9565 ms
+2026-05-10 03:30:14.226 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 3.9209 ms
+2026-05-10 03:30:14.228 +05:30 [INF] HTTP GET /api/categories responded 200 in 6.0280 ms
+2026-05-10 03:30:14.228 +05:30 [INF] HTTP GET /api/medicines responded 200 in 26.0488 ms
+2026-05-10 03:30:14.238 +05:30 [INF] HTTP GET /api/medicines responded 200 in 6.8659 ms
+2026-05-10 03:30:19.149 +05:30 [INF] HTTP GET /api/categories responded 200 in 6.4537 ms
+2026-05-10 03:30:19.149 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 6.4534 ms
+2026-05-10 03:30:19.155 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.7580 ms
+2026-05-10 03:30:19.155 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.9738 ms
+2026-05-10 03:30:19.158 +05:30 [INF] HTTP GET /api/medicines responded 200 in 15.6527 ms
+2026-05-10 03:30:19.165 +05:30 [INF] HTTP GET /api/medicines responded 200 in 5.8103 ms
+2026-05-10 03:30:51.779 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.5202 ms
+2026-05-10 03:30:51.779 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.1200 ms
+2026-05-10 03:30:51.780 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0427 ms
+2026-05-10 03:30:51.780 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0738 ms
+2026-05-10 03:30:51.781 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.5176 ms
+2026-05-10 03:30:51.781 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0507 ms
+2026-05-10 03:30:51.790 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 6.6662 ms
+2026-05-10 03:30:51.793 +05:30 [INF] HTTP GET /api/categories responded 200 in 10.0634 ms
+2026-05-10 03:30:51.798 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.2489 ms
+2026-05-10 03:30:51.801 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.6068 ms
+2026-05-10 03:30:51.803 +05:30 [INF] HTTP GET /api/medicines responded 200 in 19.5857 ms
+2026-05-10 03:30:51.814 +05:30 [INF] HTTP GET /api/medicines responded 200 in 7.9965 ms
+2026-05-10 03:34:38.238 +05:30 [WRN] Entity 'Role' has a global query filter defined and is the required end of a relationship with the entity 'UserRole'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+2026-05-10 03:35:21.605 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-10 03:35:21.610 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 6.5801 ms
+2026-05-10 03:35:21.610 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 6.5878 ms
+2026-05-10 03:35:21.610 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 6.6235 ms
+2026-05-10 03:35:21.610 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 6.6128 ms
+2026-05-10 03:35:21.610 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 6.6164 ms
+2026-05-10 03:35:21.610 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 6.5960 ms
+2026-05-10 03:35:21.911 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 282.8935 ms
+2026-05-10 03:35:21.911 +05:30 [INF] HTTP GET /api/categories responded 200 in 283.0603 ms
+2026-05-10 03:35:21.954 +05:30 [INF] HTTP GET /api/medicines responded 200 in 326.3294 ms
+2026-05-10 03:35:21.986 +05:30 [INF] HTTP GET /api/categories responded 200 in 75.4862 ms
+2026-05-10 03:35:21.992 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 81.5190 ms
+2026-05-10 03:35:22.001 +05:30 [INF] HTTP GET /api/medicines responded 200 in 44.8149 ms
+2026-05-10 03:47:43.870 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 1.5821 ms
+2026-05-10 03:47:43.870 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 1.4278 ms
+2026-05-10 03:47:43.870 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 1.4291 ms
+2026-05-10 03:47:43.870 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 1.4011 ms
+2026-05-10 03:47:43.870 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 1.4074 ms
+2026-05-10 03:47:43.870 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 1.4066 ms
+2026-05-10 03:47:43.970 +05:30 [INF] HTTP GET /api/categories responded 200 in 94.6015 ms
+2026-05-10 03:47:43.970 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 94.6080 ms
+2026-05-10 03:47:43.976 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.4971 ms
+2026-05-10 03:47:43.976 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.5007 ms
+2026-05-10 03:47:43.980 +05:30 [INF] HTTP GET /api/medicines responded 200 in 104.4340 ms
+2026-05-10 03:47:43.990 +05:30 [INF] HTTP GET /api/medicines responded 200 in 8.9052 ms
+2026-05-10 04:05:23.523 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 3.6243 ms
+2026-05-10 04:05:23.523 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 3.6256 ms
+2026-05-10 04:05:23.523 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 3.6232 ms
+2026-05-10 04:05:23.523 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 3.6223 ms
+2026-05-10 04:05:23.523 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 3.6236 ms
+2026-05-10 04:05:23.523 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 3.6236 ms
+2026-05-10 04:05:23.769 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 237.2093 ms
+2026-05-10 04:05:23.769 +05:30 [INF] HTTP GET /api/categories responded 200 in 237.2341 ms
+2026-05-10 04:05:23.773 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.6488 ms
+2026-05-10 04:05:23.773 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.6713 ms
+2026-05-10 04:05:23.786 +05:30 [INF] HTTP GET /api/medicines responded 200 in 254.2419 ms
+2026-05-10 04:05:23.793 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.8724 ms
+2026-05-10 04:07:54.719 +05:30 [INF] HTTP OPTIONS /api/backup/history responded 204 in 0.1299 ms
+2026-05-10 04:07:54.719 +05:30 [INF] HTTP OPTIONS /api/backup/history responded 204 in 0.0339 ms
+2026-05-10 04:07:54.762 +05:30 [INF] HTTP GET /api/backup/history responded 200 in 39.2194 ms
+2026-05-10 04:07:54.764 +05:30 [INF] HTTP GET /api/backup/history responded 200 in 1.2121 ms
+2026-05-10 04:07:58.718 +05:30 [INF] HTTP OPTIONS /api/backup/create responded 204 in 0.2768 ms
+2026-05-10 04:07:58.733 +05:30 [INF] HTTP POST /api/backup/create responded 200 in 11.1522 ms
+2026-05-10 04:07:58.744 +05:30 [INF] HTTP GET /api/backup/history responded 200 in 7.1707 ms
+2026-05-10 04:09:15.117 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0993 ms
+2026-05-10 04:09:15.117 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0992 ms
+2026-05-10 04:09:15.118 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0410 ms
+2026-05-10 04:09:15.132 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 12.3941 ms
+2026-05-10 04:09:15.132 +05:30 [INF] HTTP GET /api/categories responded 200 in 12.6444 ms
+2026-05-10 04:09:15.138 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.7858 ms
+2026-05-10 04:09:15.139 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 3.9971 ms
+2026-05-10 04:09:15.140 +05:30 [INF] HTTP GET /api/medicines responded 200 in 20.0849 ms
+2026-05-10 04:09:15.146 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.7527 ms
+2026-05-10 04:09:26.288 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.1800 ms
+2026-05-10 04:09:26.289 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0737 ms
+2026-05-10 04:09:26.289 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0312 ms
+2026-05-10 04:09:26.290 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0257 ms
+2026-05-10 04:09:26.296 +05:30 [INF] HTTP GET /api/categories responded 200 in 5.1399 ms
+2026-05-10 04:09:26.296 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 5.0355 ms
+2026-05-10 04:09:26.300 +05:30 [INF] HTTP GET /api/medicines responded 200 in 8.9997 ms
+2026-05-10 04:09:26.302 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 4.2997 ms
+2026-05-10 04:09:26.302 +05:30 [INF] HTTP GET /api/categories responded 200 in 4.7193 ms
+2026-05-10 04:09:26.307 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.2799 ms
+2026-05-10 04:09:40.905 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0735 ms
+2026-05-10 04:09:40.905 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0164 ms
+2026-05-10 04:09:40.905 +05:30 [INF] HTTP OPTIONS /api/suppliers responded 204 in 0.0984 ms
+2026-05-10 04:09:40.905 +05:30 [INF] HTTP OPTIONS /api/medicines responded 204 in 0.0273 ms
+2026-05-10 04:09:40.908 +05:30 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0321 ms
+2026-05-10 04:09:40.911 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.6038 ms
+2026-05-10 04:09:40.911 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.6798 ms
+2026-05-10 04:09:40.916 +05:30 [INF] HTTP GET /api/categories responded 200 in 2.8808 ms
+2026-05-10 04:09:40.916 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 2.8292 ms
+2026-05-10 04:09:40.919 +05:30 [INF] HTTP GET /api/medicines responded 200 in 10.2422 ms
+2026-05-10 04:09:40.924 +05:30 [INF] HTTP GET /api/medicines responded 200 in 4.4555 ms
+2026-05-10 04:09:44.903 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 11.8450 ms
+2026-05-10 04:09:44.903 +05:30 [INF] HTTP GET /api/categories responded 200 in 11.9123 ms
+2026-05-10 04:09:44.909 +05:30 [INF] HTTP GET /api/categories responded 200 in 3.6510 ms
+2026-05-10 04:09:44.909 +05:30 [INF] HTTP GET /api/suppliers responded 200 in 3.7521 ms
+2026-05-10 04:09:44.910 +05:30 [INF] HTTP GET /api/medicines responded 200 in 19.0648 ms
+2026-05-10 04:09:44.915 +05:30 [INF] HTTP GET /api/medicines responded 200 in 3.7791 ms

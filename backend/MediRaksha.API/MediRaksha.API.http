@@ -1,0 +1,6 @@
+@MediRaksha.API_HostAddress = http://localhost:5273
+
+GET {{MediRaksha.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
