@@ -10,6 +10,7 @@ import BackupPage from './pages/system/BackupPage';
 import ReportsPage from './pages/reports/ReportsPage';
 import ToolsPage from './pages/tools/ToolsPage';
 import AutomationPage from './pages/automation/AutomationPage';
+import HelpPage from './pages/help/HelpPage';
 import ProtectedRoute from './components/layout/ProtectedRoute';
 
 import { Toaster } from 'react-hot-toast';
@@ -32,7 +33,7 @@ function App() {
           <Route path="/users" element={<UsersPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/automation" element={<AutomationPage />} />
-          <Route path="/help" element={<div className="p-8"><h1 className="text-2xl font-bold">Help & Documentation (Coming Soon)</h1></div>} />
+          <Route path="/help" element={<HelpPage />} />
         </Route>
         
         <Route path="*" element={<Navigate to="/" replace />} />
