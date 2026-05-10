@@ -21,22 +21,110 @@ This repository acts as a monorepo containing both the backend API and the front
 ## Getting Started (Development)
 
 ### Prerequisites
-- Node.js (v18+)
-- .NET 8 SDK
-- SQL Server (LocalDB or Docker instance)
+- **Node.js** (v18+) — [Download](https://nodejs.org/)
+- **.NET 8 SDK** — [Download](https://dotnet.microsoft.com/download/dotnet/8.0)
+- **SQL Server** — LocalDB, SQL Server Express, or a Docker instance
 
-### Setup the Backend
-1. Navigate to the `backend/` folder.
-2. Update the connection string in `appsettings.json` (or `appsettings.Development.json`).
-3. Run `dotnet restore`.
-4. Apply migrations (if ready): `dotnet ef database update`.
-5. Run the API: `dotnet run --project MediRaksha.API/MediRaksha.API.csproj`.
+### Quick Start (TL;DR)
 
-### Setup the Frontend
-1. Navigate to the `frontend/` folder.
-2. Install dependencies: `npm install`.
-3. Create a `.env.local` file with the API base URL (`VITE_API_BASE_URL=http://localhost:5000/api`).
-4. Run the development server: `npm run dev`.
+Open **two terminals** and run:
+
+```bash
+# Terminal 1 — Backend API
+cd backend
+dotnet restore
+dotnet run --project MediRaksha.API/MediRaksha.API.csproj
+
+# Terminal 2 — Frontend
+cd frontend
+npm install
+npm run dev
+```
+
+> **Note:** The backend will automatically apply database migrations and seed initial data on first run.
+
+---
+
+### Step-by-Step Setup
+
+#### 1. Setup the Database
+1. Ensure SQL Server is running on `localhost` (default instance).
+2. The app will auto-create the `MediRakshaDb` database via EF Core migrations on first startup.
+3. *(Optional)* To use a custom SQL Server instance, update the connection string in `backend/MediRaksha.API/appsettings.json`:
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=YOUR_SERVER;Database=MediRakshaDb;Trusted_Connection=True;TrustServerCertificate=True;"
+   }
+   ```
+
+#### 2. Setup the Backend
+1. Navigate to the `backend/` folder:
+   ```bash
+   cd backend
+   ```
+2. Restore NuGet packages:
+   ```bash
+   dotnet restore
+   ```
+3. Run the API server:
+   ```bash
+   dotnet run --project MediRaksha.API/MediRaksha.API.csproj
+   ```
+4. The API starts at **http://localhost:5273**. Verify by visiting the health endpoint:
+   ```
+   http://localhost:5273/health
+   ```
+5. Swagger UI is available at:
+   ```
+   http://localhost:5273/swagger
+   ```
+
+> **Note:** The backend uses Serilog with Microsoft logs suppressed at Warning level, so the usual "Now listening on http://..." message may not appear in the console. The server is running if no errors are shown after the build completes.
+
+#### 3. Setup the Frontend
+1. Navigate to the `frontend/` folder:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env.local` file in the `frontend/` directory with the API base URL:
+   ```env
+   VITE_API_URL=http://localhost:5273/api
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open **http://localhost:5173** in your browser.
+
+### Default Login Credentials
+After first startup, the database is seeded with an admin account:
+
+| Field    | Value                  |
+|----------|------------------------|
+| Email    | `admin@mediraksha.com` |
+| Password | `Admin@123`            |
+
+### Available URLs
+
+| Service        | URL                                  |
+|----------------|--------------------------------------|
+| Frontend App   | http://localhost:5173                 |
+| Backend API    | http://localhost:5273/api             |
+| Swagger UI     | http://localhost:5273/swagger         |
+| Health Check   | http://localhost:5273/health          |
+
+### Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| `Couldn't find a project to run` | You must specify the project: `dotnet run --project MediRaksha.API/MediRaksha.API.csproj` |
+| Backend hangs after build | Ensure SQL Server is running. The app waits for DB connection during migration. |
+| Frontend API calls fail (CORS / 404) | Verify `.env.local` exists with `VITE_API_URL=http://localhost:5273/api` and restart the Vite dev server. |
+| No "Now listening on" message | This is expected — Serilog config suppresses Microsoft hosting logs. Check `http://localhost:5273/health` to confirm the server is running. |
 
 ## Deliverables Status
 - [x] Full backend architecture setup (Clean Architecture)
