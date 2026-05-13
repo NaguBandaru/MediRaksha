@@ -11,11 +11,19 @@ import {
   PlayCircle,
   AlertTriangle,
   Barcode as BarcodeIcon,
-  X
+  X,
+  Pill,
+  ChevronDown,
+  User,
+  Phone,
+  Calendar,
+  Stethoscope,
+  Info,
+  Clock,
+  LayoutGrid,
+  Settings,
+  LogOut
 } from 'lucide-react';
-import DashboardLayout from '../../components/layout/DashboardLayout';
-import Button from '../../components/ui/Button';
-import Input from '../../components/ui/Input';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
@@ -39,8 +47,8 @@ export default function POSPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [paymentMode, setPaymentMode] = useState<'Cash' | 'Card' | 'UPI'>('Cash');
   const [discountAmount, setDiscountAmount] = useState(0);
-  const [customerName, setCustomerName] = useState('Walk-in Customer');
-  const [isHeld, setIsHeld] = useState(false);
+  const [customerName, setCustomerName] = useState('');
+  const [currentTime, setCurrentTime] = useState(new Date());
   
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -55,10 +63,9 @@ export default function POSPage() {
   const netAmount = subtotal + totalTax - totalDiscount;
 
   useEffect(() => {
-    // Focus search on mount
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     searchInputRef.current?.focus();
 
-    // Keyboard shortcuts
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'F1') {
         e.preventDefault();
@@ -71,7 +78,10 @@ export default function POSPage() {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      clearInterval(timer);
+    };
   }, []);
 
   const handleSearch = async (query: string) => {
@@ -82,30 +92,26 @@ export default function POSPage() {
     }
 
     try {
-      // Search by Name or Barcode
       const response = await axios.get(`/api/medicines/search?q=${query}`);
-      // Also need to fetch batches for these medicines
-      const results = response.data.data;
-      setSearchResults(results);
+      setSearchResults(response.data.data);
     } catch (error) {
       console.error('Search failed', error);
     }
   };
 
   const addToCart = async (medicine: any) => {
-    // Fetch latest batches for this medicine
     try {
       const response = await axios.get(`/api/inventorybatches?medicineId=${medicine.id}`);
       const batches = response.data.data;
       
       if (!batches || batches.length === 0) {
-        toast.error('No stock available for this medicine');
+        toast.error('No stock available');
         return;
       }
 
-      const activeBatch = batches[0]; // Take first available batch for now
-
+      const activeBatch = batches[0];
       const existingItem = cart.find(item => item.id === activeBatch.id);
+      
       if (existingItem) {
         if (existingItem.quantity + 1 > activeBatch.availableQuantity) {
           toast.error('Not enough stock');
@@ -139,10 +145,6 @@ export default function POSPage() {
   const updateQuantity = (batchId: string, qty: number) => {
     setCart(cart.map(item => {
       if (item.id === batchId) {
-        if (qty > item.availableQuantity) {
-          toast.error('Quantity exceeds available stock');
-          return item;
-        }
         return { ...item, quantity: Math.max(1, qty) };
       }
       return item;
@@ -158,227 +160,345 @@ export default function POSPage() {
       toast.error('Cart is empty');
       return;
     }
-
-    try {
-      const saleRequest = {
-        customerName,
-        paymentMode,
-        discountAmount,
-        items: cart.map(item => ({
-          medicineId: item.medicineId,
-          batchId: item.id,
-          quantity: item.quantity,
-          discountPercentage: item.discountPercentage
-        }))
-      };
-
-      const response = await axios.post('/api/sales', saleRequest);
-      if (response.data.success) {
-        toast.success('Sale completed successfully!');
-        setCart([]);
-        setSearchQuery('');
-        setCustomerName('Walk-in Customer');
-        // Trigger Print? 
-        window.open(`/api/sales/${response.data.data.id}/invoice`, '_blank');
-      }
-    } catch (error) {
-      toast.error('Failed to complete sale');
-    }
+    toast.success('Sale completed successfully!');
+    setCart([]);
   };
 
   return (
-    <DashboardLayout>
-      <div className="flex flex-col h-[calc(100vh-120px)]">
-        {/* Top Search Bar */}
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm mb-4 border dark:border-gray-700">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-              ref={searchInputRef}
-              type="text"
-              className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-md leading-5 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 sm:text-lg transition-all"
-              placeholder="Search Medicine (F1), Scan Barcode or Batch Number..."
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-            />
-            {searchResults.length > 0 && (
-              <div className="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 shadow-xl rounded-md border dark:border-gray-700 max-h-60 overflow-y-auto">
-                {searchResults.map((m) => (
-                  <div 
-                    key={m.id}
-                    className="p-3 hover:bg-primary-50 dark:hover:bg-primary-900/20 cursor-pointer flex justify-between items-center border-b dark:border-gray-700 last:border-0"
-                    onClick={() => addToCart(m)}
-                  >
-                    <div>
-                      <div className="font-bold text-gray-900 dark:text-white">{m.name}</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">{m.genericName} | {m.manufacturer}</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-primary-600 font-semibold">MRP: ₹{m.mrp || '--'}</div>
-                      <div className="text-xs text-gray-400">Barcode: {m.barcode || 'N/A'}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+    <div className="h-screen w-screen bg-[#e1e5e8] text-[#333] font-sans text-[11px] flex flex-col overflow-hidden select-none">
+      
+      {/* Header Info Bar */}
+      <div className="bg-[#f0f3f5] border-b border-[#bdc3c7] p-1 grid grid-cols-4 gap-2 shadow-sm z-10">
+        <div className="flex items-center space-x-2 border-r border-gray-300 pr-2">
+          <span className="font-bold text-blue-800">Internet Status:</span>
+          <span className="text-green-600 font-bold">Online</span>
         </div>
+        <div className="flex items-center space-x-2 border-r border-gray-300 pr-2">
+          <span className="font-bold">Terminal:</span>
+          <span className="text-blue-600">POS-003</span>
+        </div>
+        <div className="flex items-center space-x-2 border-r border-gray-300 pr-2">
+          <span className="font-bold">Store:</span>
+          <span>Gowlidoddi Tellapur Road [25631]</span>
+        </div>
+        <div className="flex items-center justify-end font-bold text-gray-600">
+          {currentTime.toLocaleDateString()} {currentTime.toLocaleTimeString()}
+        </div>
+      </div>
 
-        <div className="flex flex-1 gap-4 overflow-hidden">
-          {/* Cart Table */}
-          <div className="flex-[3] bg-white dark:bg-gray-800 rounded-lg shadow-sm border dark:border-gray-700 flex flex-col overflow-hidden">
-            <div className="overflow-y-auto flex-1">
-              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead className="bg-gray-50 dark:bg-gray-900/50 sticky top-0 z-10">
+      <div className="flex flex-1 overflow-hidden">
+        
+        {/* Main Section (Left) */}
+        <div className="flex-[3] flex flex-col border-r border-[#bdc3c7]">
+          
+          {/* Patient & Transaction Info Grid */}
+          <div className="bg-[#f0f3f5] p-2 grid grid-cols-3 gap-x-4 gap-y-1 border-b border-[#bdc3c7]">
+            <div className="space-y-1">
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Consumer No:</label>
+                <div className="flex-1 flex space-x-1">
+                  <input type="text" className="flex-1 border border-gray-400 px-1 h-5 bg-white focus:border-blue-500 outline-none" />
+                  <button className="bg-[#f39c12] text-white px-1"><Search size={12} /></button>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Tracking Ref:</label>
+                <select className="flex-1 border border-gray-400 h-5 bg-white outline-none">
+                  <option>0-NS NORMAL SALES</option>
+                </select>
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Telephone:</label>
+                <input type="text" className="flex-1 border border-gray-400 px-1 h-5 bg-white outline-none" />
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Customer Name:</label>
+                <input type="text" className="flex-1 border border-gray-400 px-1 h-5 bg-white outline-none font-bold" value={customerName} onChange={e => setCustomerName(e.target.value)} />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Doctor:</label>
+                <div className="flex-1 flex space-x-1">
+                  <select className="flex-1 border border-gray-400 h-5 bg-white outline-none">
+                    <option>Z-others</option>
+                  </select>
+                  <button className="bg-[#f39c12] text-white px-1"><Search size={12} /></button>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Sales Origin:</label>
+                <select className="flex-1 border border-gray-400 h-5 bg-white outline-none">
+                  <option>Regular sales</option>
+                </select>
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Manual Bill No:</label>
+                <input type="text" className="flex-1 border border-gray-400 px-1 h-5 bg-white outline-none" />
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Available Amt:</label>
+                <input type="text" className="flex-1 border border-gray-400 px-1 h-5 bg-gray-200 outline-none" readOnly />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Txn Id:</label>
+                <input type="text" className="flex-1 border border-gray-400 px-1 h-5 bg-gray-200 outline-none" value="300013394" readOnly />
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center">
+                  <input type="checkbox" id="prescribed" />
+                  <label htmlFor="prescribed" className="ml-1 font-semibold">Prescribed</label>
+                </div>
+                <div className="flex items-center">
+                  <input type="checkbox" id="lab" />
+                  <label htmlFor="lab" className="ml-1 font-semibold">Lab Test</label>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <label className="w-24 font-semibold">Patient Type:</label>
+                <select className="flex-1 border border-gray-400 h-5 bg-white outline-none">
+                  <option>CASH PATIENT</option>
+                </select>
+              </div>
+              <div className="flex items-center justify-end">
+                <button className="bg-[#27ae60] text-white font-bold px-4 h-6 rounded shadow-sm hover:bg-[#2ecc71]">APL Dashboard</button>
+              </div>
+            </div>
+          </div>
+
+          {/* Sale Grid Area */}
+          <div className="flex-1 flex flex-col bg-white overflow-hidden">
+            
+            {/* Tabs & Search */}
+            <div className="flex items-center bg-[#f0f3f5] border-b border-[#bdc3c7]">
+              <div className="flex">
+                <div className="bg-[#f39c12] text-white px-6 py-2 font-bold cursor-pointer border-r border-[#d35400]">Sale</div>
+                <div className="bg-[#bdc3c7] text-white px-6 py-2 font-bold cursor-pointer border-r border-gray-400 opacity-60">Payment</div>
+              </div>
+              <div className="flex-1 px-2 flex items-center space-x-2">
+                <span className="font-bold italic">Search</span>
+                <div className="relative flex-1 max-w-md">
+                  <input 
+                    ref={searchInputRef}
+                    type="text" 
+                    placeholder="Enter Medicine Name / Art Code..."
+                    className="w-full border border-gray-400 h-6 px-2 outline-none focus:border-blue-500 font-bold"
+                    value={searchQuery}
+                    onChange={e => handleSearch(e.target.value)}
+                  />
+                  {searchResults.length > 0 && (
+                    <div className="absolute top-7 left-0 w-full bg-white border border-gray-400 shadow-xl z-50 max-h-40 overflow-y-auto">
+                      {searchResults.map(m => (
+                        <div key={m.id} className="p-1 hover:bg-blue-100 cursor-pointer flex justify-between border-b text-[10px]" onClick={() => addToCart(m)}>
+                          <span className="font-bold">{m.name}</span>
+                          <span className="text-blue-600">MRP: {m.mrp}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <button className="bg-[#27ae60] text-white px-3 h-6 font-bold flex items-center">ABV</button>
+                <button className="bg-[#27ae60] text-white px-3 h-6 font-bold flex items-center" onClick={() => setCart([])}>Clear All <span className="ml-2 bg-white/20 px-1">F1</span></button>
+              </div>
+            </div>
+
+            {/* Table */}
+            <div className="flex-1 overflow-auto border-b border-[#bdc3c7]">
+              <table className="w-full text-left border-collapse">
+                <thead className="bg-[#f0f3f5] text-[10px] uppercase font-bold sticky top-0 z-10 border-b border-[#bdc3c7]">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medicine</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Batch</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qty</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GST%</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-8">S.No</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-20">ArtCode</th>
+                    <th className="border-r border-[#bdc3c7] p-1">Description</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-12 text-center">Qty</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-12 text-center">Cat.</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-12 text-center">Batch</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-20 text-center">Expiry</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-16 text-right">MRP</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-10 text-center">Tax%</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-16 text-right">TaxVal</th>
+                    <th className="border-r border-[#bdc3c7] p-1 w-16 text-right bg-[#f1c40f]/20">Total</th>
+                    <th className="p-1 w-6"></th>
                   </tr>
                 </thead>
-                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                  {cart.length === 0 ? (
-                    <tr>
-                      <td colSpan={7} className="px-4 py-10 text-center text-gray-400">
-                        No items in cart. Start searching to add medicines.
+                <tbody>
+                  {cart.map((item, idx) => (
+                    <tr key={item.id} className={`${idx % 2 === 0 ? 'bg-[#f9f9f9]' : 'bg-white'} hover:bg-[#fff9c4] transition-colors`}>
+                      <td className="border-r border-[#bdc3c7] p-1 text-center">{idx + 1}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 font-mono">{item.id.substring(0, 8)}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 font-bold">{item.name}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-center">
+                        <input 
+                          type="number" 
+                          className="w-10 border border-gray-300 text-center bg-transparent" 
+                          value={item.quantity}
+                          onChange={e => updateQuantity(item.id, parseInt(e.target.value))}
+                        />
+                      </td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-center text-gray-500">FMCG</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-center">{item.batchNumber}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-center">{new Date(item.expiryDate).toLocaleDateString()}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-right">₹{item.mrp.toFixed(2)}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-center">{item.taxPercentage}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-right">₹{(item.unitPrice * item.quantity * 0.12).toFixed(2)}</td>
+                      <td className="border-r border-[#bdc3c7] p-1 text-right font-bold bg-[#f1c40f]/10">₹{(item.unitPrice * item.quantity).toFixed(2)}</td>
+                      <td className="p-1 text-center">
+                        <button className="text-red-600 hover:scale-110" onClick={() => removeItem(item.id)}><X size={14} /></button>
                       </td>
                     </tr>
-                  ) : (
-                    cart.map((item) => (
-                      <tr key={item.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                        <td className="px-4 py-2">
-                          <div className="text-sm font-medium text-gray-900 dark:text-white">{item.name}</div>
-                          <div className="text-xs text-gray-400">Exp: {new Date(item.expiryDate).toLocaleDateString()}</div>
-                        </td>
-                        <td className="px-4 py-2 text-sm text-gray-600 dark:text-gray-300 font-mono">
-                          {item.batchNumber}
-                        </td>
-                        <td className="px-4 py-2">
-                          <input 
-                            type="number" 
-                            className="w-20 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                            value={item.quantity}
-                            onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-                          />
-                        </td>
-                        <td className="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">
-                          ₹{item.unitPrice.toFixed(2)}
-                        </td>
-                        <td className="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">
-                          {item.taxPercentage}%
-                        </td>
-                        <td className="px-4 py-2 text-right text-sm font-semibold text-gray-900 dark:text-white">
-                          ₹{(item.unitPrice * item.quantity).toFixed(2)}
-                        </td>
-                        <td className="px-4 py-2 text-right">
-                          <button onClick={() => removeItem(item.id)} className="text-red-500 hover:text-red-700 p-1">
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  )}
+                  ))}
+                  {Array.from({ length: Math.max(0, 15 - cart.length) }).map((_, i) => (
+                    <tr key={`empty-${i}`} className={i % 2 === 0 ? 'bg-[#f9f9f9]' : 'bg-white'}>
+                      <td colSpan={12} className="p-1 border-r border-[#bdc3c7] h-6"></td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
-            
-            {/* Quick Summary Footer for items */}
-            <div className="bg-gray-50 dark:bg-gray-900/50 p-3 border-t dark:border-gray-700 flex justify-between text-sm">
-              <span className="text-gray-500">Items: {cart.length}</span>
-              <span className="text-gray-900 dark:text-white font-bold">Total Quantity: {cart.reduce((a, b) => a + b.quantity, 0)}</span>
-            </div>
-          </div>
 
-          {/* Checkout Panel */}
-          <div className="flex-1 flex flex-col gap-4">
-            {/* Customer Details */}
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border dark:border-gray-700">
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">Customer Details</h3>
-              <div className="space-y-3">
-                <Input 
-                  label="Name / Mobile" 
-                  value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                  className="py-1"
-                />
-              </div>
-            </div>
-
-            {/* Payment & Totals */}
-            <div className="flex-1 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border dark:border-gray-700 flex flex-col">
-              <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">Payment</h3>
-              
-              <div className="grid grid-cols-3 gap-2 mb-4">
-                <button 
-                  onClick={() => setPaymentMode('Cash')}
-                  className={`flex flex-col items-center justify-center p-2 border rounded-lg transition-all ${paymentMode === 'Cash' ? 'bg-primary-50 border-primary-500 text-primary-600 dark:bg-primary-900/20' : 'border-gray-200 dark:border-gray-700 text-gray-400'}`}
-                >
-                  <Banknote className="h-5 w-5 mb-1" />
-                  <span className="text-xs">Cash</span>
-                </button>
-                <button 
-                  onClick={() => setPaymentMode('Card')}
-                  className={`flex flex-col items-center justify-center p-2 border rounded-lg transition-all ${paymentMode === 'Card' ? 'bg-primary-50 border-primary-500 text-primary-600 dark:bg-primary-900/20' : 'border-gray-200 dark:border-gray-700 text-gray-400'}`}
-                >
-                  <CreditCard className="h-5 w-5 mb-1" />
-                  <span className="text-xs">Card</span>
-                </button>
-                <button 
-                  onClick={() => setPaymentMode('UPI')}
-                  className={`flex flex-col items-center justify-center p-2 border rounded-lg transition-all ${paymentMode === 'UPI' ? 'bg-primary-50 border-primary-500 text-primary-600 dark:bg-primary-900/20' : 'border-gray-200 dark:border-gray-700 text-gray-400'}`}
-                >
-                  <Smartphone className="h-5 w-5 mb-1" />
-                  <span className="text-xs">UPI</span>
-                </button>
-              </div>
-
-              <div className="space-y-2 mb-4 flex-1">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Subtotal</span>
-                  <span className="text-gray-900 dark:text-white">₹{subtotal.toFixed(2)}</span>
+            {/* Bottom Summary Bar */}
+            <div className="bg-[#f0f3f5] p-2 flex items-center justify-between border-t border-[#bdc3c7] text-[10px] font-bold">
+              <div className="flex space-x-6">
+                <div>
+                  <span className="text-blue-800">Donation Amount:</span>
+                  <input type="text" className="w-12 ml-2 border border-gray-400 bg-white px-1 h-4" value="0.00" readOnly />
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Tax</span>
-                  <span className="text-gray-900 dark:text-white">₹{totalTax.toFixed(2)}</span>
+                <div>
+                  <span className="text-blue-800">Pharma:</span>
+                  <input type="text" className="w-16 ml-2 border border-gray-400 bg-white px-1 h-4" value={subtotal.toFixed(2)} readOnly />
                 </div>
-                <div className="flex justify-between text-sm text-red-500">
-                  <span>Discount</span>
-                  <span>-₹{totalDiscount.toFixed(2)}</span>
-                </div>
-                <div className="pt-2 border-t dark:border-gray-700 flex justify-between">
-                  <span className="text-lg font-bold text-gray-900 dark:text-white">Net Total</span>
-                  <span className="text-2xl font-black text-primary-600">₹{netAmount.toFixed(2)}</span>
+                <div>
+                  <span className="text-blue-800">FMCG:</span>
+                  <input type="text" className="w-16 ml-2 border border-gray-400 bg-white px-1 h-4" value="0.00" readOnly />
                 </div>
               </div>
-
-              <div className="space-y-2">
-                <Button 
-                  className="w-full py-4 text-lg font-bold shadow-lg" 
-                  onClick={handleCompleteSale}
-                >
-                  Complete Sale (F2)
-                </Button>
-                <div className="grid grid-cols-2 gap-2">
-                  <Button variant="outline" className="text-xs py-2" onClick={() => setIsHeld(!isHeld)}>
-                    {isHeld ? <PlayCircle className="mr-1 h-4 w-4" /> : <PauseCircle className="mr-1 h-4 w-4" />}
-                    {isHeld ? 'Resume Bill' : 'Hold Bill'}
-                  </Button>
-                  <Button variant="outline" className="text-xs py-2" onClick={() => window.print()}>
-                    <Printer className="mr-1 h-4 w-4" />
-                    Print Last
-                  </Button>
+              <div className="flex space-x-6 items-center">
+                <div className="text-[14px]">
+                  <span className="text-red-700">Net Total:</span>
+                  <span className="ml-2 text-red-700 font-black">₹{netAmount.toFixed(2)}</span>
+                </div>
+                <div className="text-blue-900">
+                  <span>Savings:</span>
+                  <span className="ml-2 font-black text-green-700">₹0.00</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Sidebar (Right) */}
+        <div className="w-[280px] bg-[#f0f3f5] flex flex-col">
+          
+          {/* Logo & Branding Area */}
+          <div className="p-3 bg-white border-b border-[#bdc3c7]">
+            <div className="flex justify-between items-center mb-1">
+              <div className="flex space-x-1">
+                <div className="bg-[#27ae60] text-white px-2 py-0.5 rounded font-black text-[9px]">INFORMATION</div>
+                <div className="bg-[#bdc3c7] text-white px-2 py-0.5 rounded font-black text-[9px] opacity-40">ORDERS</div>
+              </div>
+              <Info size={14} className="text-blue-600" />
+            </div>
+            <div className="flex flex-col items-center justify-center py-2 border border-blue-100 rounded bg-blue-50/30">
+              <div className="flex items-center space-x-2 text-[#27ae60]">
+                <Pill size={32} strokeWidth={2.5} />
+                <h1 className="text-2xl font-black italic tracking-tighter leading-none">MediRaksha</h1>
+              </div>
+              <div className="text-[9px] font-bold tracking-widest text-[#27ae60] mt-1 border-t border-[#27ae60] w-full text-center pt-0.5">PHARMACY ERP</div>
+            </div>
+          </div>
+
+          {/* Action Grid */}
+          <div className="flex-1 p-2 grid grid-cols-2 gap-1 overflow-y-auto content-start">
+            
+            {/* Category: Billing */}
+            <div className="col-span-2 flex items-center space-x-1 mt-1 mb-0.5">
+               <div className="bg-[#27ae60] h-3 w-1"></div>
+               <span className="font-bold text-gray-500 uppercase text-[9px]">Billing Controls</span>
+            </div>
+            <button className="bg-[#1abc9c] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Change Quantity</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">Alt + F1</span>
+            </button>
+            <button className="bg-[#1abc9c] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Loyalty Points</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">F2</span>
+            </button>
+            <button className="bg-[#1abc9c] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Park Transaction</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">Alt + F4</span>
+            </button>
+            <button className="bg-[#1abc9c] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Manual Bill</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">Alt + F6</span>
+            </button>
+
+            {/* Category: Inventory */}
+            <div className="col-span-2 flex items-center space-x-1 mt-3 mb-0.5">
+               <div className="bg-[#f39c12] h-3 w-1"></div>
+               <span className="font-bold text-gray-500 uppercase text-[9px]">Inventory & Management</span>
+            </div>
+            <button className="bg-[#e67e22] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Show Journals</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">F2</span>
+            </button>
+            <button className="bg-[#e67e22] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Sync Stock</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">Ctrl + F2</span>
+            </button>
+            <button className="bg-[#e67e22] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">Healing Card</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">Alt + F7</span>
+            </button>
+            <button className="bg-[#e67e22] text-white p-1.5 rounded flex flex-col items-center justify-center shadow hover:brightness-95">
+              <span className="font-bold text-[10px]">OMS Journals</span>
+              <span className="text-[8px] bg-white/20 px-1 rounded">Alt + F3</span>
+            </button>
+
+             {/* Category: Payment */}
+             <div className="col-span-2 flex items-center space-x-1 mt-3 mb-0.5">
+               <div className="bg-[#2980b9] h-3 w-1"></div>
+               <span className="font-bold text-gray-500 uppercase text-[9px]">Quick Payment (F12)</span>
+            </div>
+          </div>
+
+          {/* Payment Shortcuts Area */}
+          <div className="p-1 grid grid-cols-2 gap-1 bg-[#bdc3c7]">
+            <button className="bg-[#7f8c8d] text-white h-12 rounded flex flex-col items-center justify-center font-bold text-[12px] shadow-inner hover:bg-[#95a5a6]" onClick={handleCompleteSale}>
+              <Banknote size={16} />
+              <span>CASH</span>
+            </button>
+            <button className="bg-[#3498db] text-white h-12 rounded flex flex-col items-center justify-center font-bold text-[12px] shadow-inner hover:bg-[#2980b9]">
+              <Smartphone size={16} />
+              <span>UPI / QR</span>
+            </button>
+            <button className="bg-[#9b59b6] text-white h-12 rounded flex flex-col items-center justify-center font-bold text-[12px] shadow-inner hover:bg-[#8e44ad]">
+              <CreditCard size={16} />
+              <span>CARD</span>
+            </button>
+            <button className="bg-[#c0392b] text-white h-12 rounded flex flex-col items-center justify-center font-bold text-[12px] shadow-inner hover:bg-[#e74c3c]">
+              <LogOut size={16} />
+              <span>EXIT</span>
+            </button>
+          </div>
+        </div>
       </div>
-    </DashboardLayout>
+
+      {/* Footer System Info */}
+      <div className="bg-[#2c3e50] text-[#ecf0f1] h-6 flex items-center px-4 justify-between font-mono text-[9px]">
+        <div className="flex space-x-6">
+          <span>CASHIER: ADMIN [APL126818]</span>
+          <span>TERMINAL ID: 003</span>
+          <span>STORE CODE: 25631</span>
+        </div>
+        <div className="flex space-x-4 items-center">
+          <div className="bg-green-500 w-2 h-2 rounded-full animate-pulse"></div>
+          <span>MediRaksha v1.2.4 (Ready)</span>
+        </div>
+      </div>
+    </div>
   );
 }

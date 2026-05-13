@@ -56,8 +56,8 @@ namespace MediRaksha.Infrastructure.Persistence
             var adminUser = new User
             {
                 Id = Guid.NewGuid(),
-                FirstName = "Admin",
-                LastName = "User",
+                FullName = "Admin User",
+                UserName = "admin@mediraksha.com",
                 Email = "admin@mediraksha.com",
                 PasswordHash = passwordHasher.HashPassword("Admin@123"),
                 PhoneNumber = "1234567890",
