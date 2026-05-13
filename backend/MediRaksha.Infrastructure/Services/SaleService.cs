@@ -44,7 +44,7 @@ namespace MediRaksha.Infrastructure.Services
                     NetAmount = sale.NetAmount,
                     PaymentMode = sale.PaymentMode,
                     Status = sale.Status,
-                    CreatedByUserName = user != null ? $"{user.FirstName} {user.LastName}" : "Unknown"
+                    CreatedByUserName = user != null ? user.FullName : "Unknown"
                 });
             }
 
@@ -103,7 +103,7 @@ namespace MediRaksha.Infrastructure.Services
                 NetAmount = sale.NetAmount,
                 PaymentMode = sale.PaymentMode,
                 Status = sale.Status,
-                CreatedByUserName = user != null ? $"{user.FirstName} {user.LastName}" : "Unknown",
+                CreatedByUserName = user != null ? user.FullName : "Unknown",
                 Items = itemDtos
             };
 
